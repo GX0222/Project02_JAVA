@@ -1,0 +1,10 @@
+package tw.labs.lab01;
+
+public class class03 {
+
+		public static void main(String[] args) {
+			// float, double
+			
+		}
+	
+}
