@@ -1,0 +1,24 @@
+package tw.labs.lab01;
+
+public class class01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/* 	塊狀
+		 *  		註解
+		 */       
+		
+		/**
+		 * 		Java Doc
+		 */
+		
+		// byte, short, int, long
+		// byte 2^8 => 256 => -128 ~ 127
+		byte var1;    //  [a-zA-Z$_][a-zA-Z0-9$_]*
+		byte $_$ = 123, 變數 = -88;
+		System.out.println($_$);
+
+	}
+
+}

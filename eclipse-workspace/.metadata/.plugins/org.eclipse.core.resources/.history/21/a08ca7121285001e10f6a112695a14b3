@@ -1,0 +1,12 @@
+package tw.labs.lab01;
+
+public class class04 {
+
+	public static void main(String[] args) {
+			double temp = Math.random();
+			System.out.println(temp);
+			int score = (int)(temp * 101);
+			System.out.println(score);
+	}
+
+}
