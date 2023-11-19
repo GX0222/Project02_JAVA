@@ -1,0 +1,16 @@
+package tw.labs.lab01;
+
+public class class_9981 {
+
+	public static void main(String[] args) {
+
+	}
+
+	static void input3() {
+		for (int i = 1; i <= 7; i += 3) {
+			System.out.printf("%d x %d = %d  ", i, i + 1, i + 2);
+
+		}
+	}
+
+}
