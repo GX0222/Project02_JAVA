@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+
+
+    <style>
+        div.div_inline {
+            display: inline-block;
+            border: 2px solid lightseagreen;
+            text-align: center;
+            align-items: center;
+            width: 200px;
+            font-size: larger;
+            margin: 0px;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+    <div>
+        <button id="btn3">創造3x3</button>
+        <button id="btn4">創造4x2</button>
+    </div>
+    <div id="bigDiv"></div>
+
+
+
+
+
+
+
+
+    <script>
+        function fun3() {
+            $("#bigDiv").empty();
+            for (var x = 1; x <= 7; x+=3) {
+                for (var i = 1; i <= 9; i++) {
+                    if (i == 1) {
+                        $("#bigDiv").append(
+                            `<div id="div${x} class="div_container">
+                                <div id="div${x}_1" class="div_inline">
+                                    <a>${x} x ${i} = ${x * i}</a><br>
+                                </div>
+                                <div id="div${x}_2" class="div_inline">
+                                    <a>${x + 1} x ${i} = ${(x + 1) * i}</a><br>
+                                </div>
+                                <div id="div${x}_3" class="div_inline">
+                                    <a>${x + 2} x ${i} = ${(x + 2) * i}</a><br>
+                                </div>
+                            </div>`
+                        )
+                    } else {
+                        $(`#div${x}_1`).append(
+                            `<a>${x} x ${i} = ${x * i}</a><br>`
+                        )
+                        $(`#div${x}_2`).append(
+                            `<a>${x + 1} x ${i} = ${(x + 1) * i}</a><br>`
+                        )
+                        $(`#div${x}_3`).append(
+                            `<a>${x + 2} x ${i} = ${(x + 2) * i}</a><br>`
+                        )
+                    }
+                }
+            }
+        }
+
+
+        function fun4() {
+            $("#bigDiv").empty();
+            for (var x = 2; x <= 6; x+=4) {
+                for (var i = 1; i <= 9; i++) {
+                    if (i == 1) {
+                        $("#bigDiv").append(
+                            `<div id="div${x} class="div_container">
+                                <div id="div${x}_1" class="div_inline">
+                                    <a>${x} x ${i} = ${x * i}</a><br>
+                                </div>
+                                <div id="div${x}_2" class="div_inline">
+                                    <a>${x + 1} x ${i} = ${(x + 1) * i}</a><br>
+                                </div>
+                                <div id="div${x}_3" class="div_inline">
+                                    <a>${x + 2} x ${i} = ${(x + 2) * i}</a><br>
+                                </div>
+                                <div id="div${x}_4" class="div_inline">
+                                    <a>${x + 3} x ${i} = ${(x + 3) * i}</a><br>
+                                </div>
+                            </div>`
+                        )
+                    } else {
+                        $(`#div${x}_1`).append(
+                            `<a>${x} x ${i} = ${x * i}</a><br>`
+                        )
+                        $(`#div${x}_2`).append(
+                            `<a>${x + 1} x ${i} = ${(x + 1) * i}</a><br>`
+                        )
+                        $(`#div${x}_3`).append(
+                            `<a>${x + 2} x ${i} = ${(x + 2) * i}</a><br>`
+                        )
+                        $(`#div${x}_4`).append(
+                            `<a>${x + 3} x ${i} = ${(x + 3) * i}</a><br>`
+                        )
+                    }
+                }
+            }
+        }
+
+
+
+        $(document).on("click", "#btn3", function () {
+            fun3();
+        })
+        $(document).on("click", "#btn4", function () {
+            fun4();
+        })
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
