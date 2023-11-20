@@ -1,0 +1,16 @@
+package tw.labs.lab01;
+
+public class class08 {
+
+	public static void main(String[] args) {
+		
+		int [] a;
+		byte [] b = new byte [3];
+		System.out.println(b[0]);
+		System.out.println(b[1]);
+		System.out.println(b[2]);
+		
+
+	}
+
+}

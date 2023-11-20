@@ -1,0 +1,44 @@
+package tw.labs.lab01;
+
+public class class08 {
+
+	public static void main(String[] args) {
+		// 陣列、陣列初始化的預設值
+		int[] a;
+		boolean[] b = new boolean[3];
+		System.out.println(b[0]);
+		System.out.println(b[1]);
+		System.out.println(b[2]);
+		
+		
+		int p0, p1, p2, p3, p4, p5, p6;
+		p0 = p1 = p2 = p3 = p4 = p5 = p6 = 0;
+		for (int i = 1; i <= 100; i++) {
+			int roll = (int) (Math.random() * 7);
+			switch (roll) {
+			case 1:
+				p1++;
+				break;
+			case 2:
+				p2++;
+				break;
+			case 3:
+				p3++;
+				break;
+			case 4:
+				p4++;
+				break;
+			case 5:
+				p5++;
+				break;
+			case 6:
+				p6++;
+				break;
+			default:
+				p0++;
+			}
+		}
+		System.out.printf("1:%d, 2:%d, 3:%d, 4:%d, 5:%d, 6:%d, err:%d", p1, p2, p3, p4, p5, p6,p0);
+	}
+
+}

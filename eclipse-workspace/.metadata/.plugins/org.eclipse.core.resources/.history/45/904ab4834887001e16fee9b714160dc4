@@ -1,0 +1,12 @@
+package tw.labs.lab01;
+
+public class lab_PrimeNumber_01 {
+
+	public static void main(String[] args) {
+		
+		int [] a;
+		int [] b = new int [3];
+
+	}
+
+}
