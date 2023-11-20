@@ -1,0 +1,5 @@
+package tw.lab.classes;
+
+public class Bike {
+	double speed;
+}

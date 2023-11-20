@@ -1,0 +1,17 @@
+package tw.labs.lab01;
+
+import javax.swing.JFrame;
+
+public class class13 extends JFrame {
+	
+	public class13() {
+		setVisible(true);
+		setSize(720, 480);
+	}
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
