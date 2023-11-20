@@ -24,7 +24,7 @@ public class class11 {
 		// for-each
 		for (int[] v : b) {
 			for (int vv : v) {
-				System.out.print(vv+"  ");
+				System.out.println(vv+"  ");
 			}
 			System.out.println();
 		}

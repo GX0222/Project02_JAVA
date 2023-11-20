@@ -22,11 +22,10 @@ public class class11 {
 		System.out.println("====");
 
 		// for-each
-		for (int[] v : b) {
-			for (int vv : v) {
-				System.out.print(vv+"  ");
+		for (int [] v : b) {
+			for (int [] vv : v) {
+
 			}
-			System.out.println();
 		}
 
 	}
