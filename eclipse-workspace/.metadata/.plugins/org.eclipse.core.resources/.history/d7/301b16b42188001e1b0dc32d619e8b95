@@ -1,0 +1,14 @@
+package tw.lab.classes;
+
+public class TWid {
+	private String id ;
+	
+	public boolean isReightID(String id) {
+		return true;
+	}
+	
+	private TWid {
+		
+	}
+	
+}

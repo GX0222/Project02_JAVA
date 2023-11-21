@@ -1,0 +1,9 @@
+package tw.lab.classes;
+
+public class Scooter extends Bike {
+
+	public void upSpeed() {
+		
+	}
+	
+}

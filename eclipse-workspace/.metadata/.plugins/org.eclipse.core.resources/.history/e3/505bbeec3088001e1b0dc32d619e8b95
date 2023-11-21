@@ -1,0 +1,23 @@
+package tw.lab.classes;
+
+public class TWid {
+	private String id;
+
+	public static boolean isRightID(String id) {
+		// 1. length = 10
+		// 2. 1=> A-Z
+		// 3. 2=> 1 or 2
+		// 4. 3 ~ 10 => 0 ~ 9
+		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		boolean isRight = false;
+		if (id.length() == 10) {
+			if (letters.indexOf(id.charAt(0)) >= 0) {
+				if (id.charAt(1) == 1 || id.charAt(2) == 2) {
+
+				}
+			}
+		}
+		return true;
+	}
+
+}

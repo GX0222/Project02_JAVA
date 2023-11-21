@@ -1,0 +1,15 @@
+package tw.labs.lab01;
+
+public class class20 {
+
+	public static void main(String[] args) {
+		Brad201 obj1 = new Brad201();
+		
+
+	}
+	
+	class Brad201 {
+		
+	}
+
+}

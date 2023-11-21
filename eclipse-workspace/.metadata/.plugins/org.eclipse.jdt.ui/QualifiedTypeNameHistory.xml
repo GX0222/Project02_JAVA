@@ -5,11 +5,19 @@
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.lang.Math"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
     <fullyQualifiedTypeName name="tw.lab.classes.Bike"/>
+    <fullyQualifiedTypeName name="tw.lab.classes.Scooter"/>
+    <fullyQualifiedTypeName name="javax.naming.ldap.PagedResultsResponseControl"/>
+    <fullyQualifiedTypeName name="tw.lab.classes.TWid"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="tw.lab.classes.TWid_v2"/>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="tw.lab.classes.TWid_v3"/>
+    <fullyQualifiedTypeName name="tw.labs.lab01.class20.Brad201"/>
 </qualifiedTypeNameHistroy>

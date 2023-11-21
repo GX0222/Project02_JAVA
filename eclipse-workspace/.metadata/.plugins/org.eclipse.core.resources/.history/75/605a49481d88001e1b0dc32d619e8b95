@@ -1,0 +1,13 @@
+package tw.labs.lab01;
+
+public class class17 {
+
+	public static void main(String[] args) {
+		String s1 = "MonsterHunter";
+		System.out.println("MonsterHunter".charAt(2));
+		String s2 = "MonsterHunter";
+		String S3 = new String("MonsterHunter\");
+
+	}
+
+}

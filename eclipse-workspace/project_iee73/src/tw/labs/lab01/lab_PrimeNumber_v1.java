@@ -9,7 +9,7 @@ public class lab_PrimeNumber_v1 {
 				System.out.println(i + "  ");
 			} else {
 				boolean isPrime = true;
-				for (int x = 2; x <=( i / 2 + 1); x++) {
+				for (int x = 2; x <= (i / 2 + 1); x++) {
 					if (i % x == 0) {
 						isPrime = false;
 						break;
