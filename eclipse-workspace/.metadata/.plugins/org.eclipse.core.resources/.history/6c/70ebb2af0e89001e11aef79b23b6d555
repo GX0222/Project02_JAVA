@@ -1,0 +1,40 @@
+package tw.labs.lab01;
+
+import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class class25 extends JFrame {
+	
+	public class25() {
+		super("25!!!!");
+		
+		setLayout(new BorderLayout());
+		JPanel panel = new JPanel();
+		add(panel, BorderLayout.CENTER);
+		
+		setSize(640, 480);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+
+	public static void main(String[] args) {
+		new class25();
+
+	}
+
+}
+
+class MyMouseListener extends MouseAdapter{
+	
+}
+
+
+
+
+
+
+
+

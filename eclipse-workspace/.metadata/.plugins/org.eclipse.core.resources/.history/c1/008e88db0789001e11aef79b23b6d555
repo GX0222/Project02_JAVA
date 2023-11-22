@@ -1,0 +1,50 @@
+package tw.labs.lab01;
+
+import tw.lab.classes.class211;
+
+public class class24 {
+
+	public static void main(String[] args) {
+//		class241 obj1 = new class241();   抽象類別不能用來宣告
+		class241 obj1 = new class242();
+		class241 obj2 = new class241() {
+			void m2(){}
+		};
+		class211 obj3 = new class211() {
+
+			@Override
+			public void m1() {
+				// TODO Auto-generated method stub
+				
+			}};
+	}
+
+}
+
+abstract class class241 {
+	void m1() {}
+	abstract void m2();
+}
+
+class class242 extends class241 {
+	void m2() {}
+}
+
+class class243 extends class241 {
+	void m2() {}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

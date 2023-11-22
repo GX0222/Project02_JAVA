@@ -4,7 +4,7 @@ public class TWid_v3 {
 	private String id;
 	public static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 
-	public TWid_v3() {
+	public TWid_v3() {								// this、super只能放在第一道
 		this((int) (Math.random() * 2) == 0);
 	}
 

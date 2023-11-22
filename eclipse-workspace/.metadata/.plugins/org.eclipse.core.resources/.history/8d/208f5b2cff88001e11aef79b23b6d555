@@ -1,0 +1,18 @@
+package tw.labs.lab01;
+
+import tw.lab.classes.*;
+
+public class class21 {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
+
+class class21a implements class211{
+	public void m1 () {
+		
+	}
+}

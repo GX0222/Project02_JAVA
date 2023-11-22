@@ -1,0 +1,24 @@
+package tw.labs.lab01;
+
+public class class22 {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
+
+
+class class221 {
+	
+}
+
+
+class class222 extends class221{
+	
+}
+
+class class223 extends class221{
+	
+}

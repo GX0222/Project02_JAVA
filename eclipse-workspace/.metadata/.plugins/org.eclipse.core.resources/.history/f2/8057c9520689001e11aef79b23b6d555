@@ -1,0 +1,14 @@
+package tw.labs.lab01;
+
+public class class24 {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+
+abstract class class241{
+	void m1() {}
+	abstract void m2 ();
+}

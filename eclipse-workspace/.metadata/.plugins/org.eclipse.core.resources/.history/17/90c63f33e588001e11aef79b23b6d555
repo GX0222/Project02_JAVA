@@ -1,0 +1,84 @@
+package tw.labs.lab01;
+
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class GuessNumber extends JFrame implements ActionListener {
+	private JButton guess;
+	private JTextArea log;
+	private JTextField input;
+	private String answer;
+
+	public GuessNumber() {
+		// super();
+		super("猜數字遊戲");
+		setLayout(new BorderLayout());
+		JPanel top = new JPanel(new BorderLayout());
+
+		guess = new JButton("猜");
+		input = new JTextField();
+		log = new JTextArea();
+
+		top.add(guess, BorderLayout.EAST);
+		top.add(input, BorderLayout.CENTER);
+
+		add(top, BorderLayout.NORTH);
+		add(log, BorderLayout.CENTER);
+
+		setSize(800, 600);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		answer = creatAnswer(3);
+		System.out.println(answer);
+	}
+	
+	//=====
+
+	public static void main(String[] args) {
+		new GuessNumber();
+
+	}
+	
+	//=====
+
+	private String creatAnswer(int d) {
+		int num = 10;
+		int[] poker = new int[num];
+		int temp;
+
+		for (int i = 0; i < poker.length; i++) {
+			poker[i] = i + 1;
+		}
+
+		for (int i = num - 1; i > 0; i--) {
+			temp = (int) (Math.random() * (i) - 1);
+			poker[i] += poker[temp];
+			poker[temp] = poker[i] - poker[temp];
+			poker[i] = poker[i] - poker[temp];
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		for (int i= 0;i<d;i++) {
+			sb.append(poker[i]);
+		}
+		
+		return sb.toString();
+	}
+	
+	//=====
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
