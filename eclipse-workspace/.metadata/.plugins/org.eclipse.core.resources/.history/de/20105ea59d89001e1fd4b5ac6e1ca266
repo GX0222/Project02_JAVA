@@ -1,0 +1,5 @@
+package tw.lab.classes;
+
+public interface class27 extends class26, class28 {
+	void m2();
+}

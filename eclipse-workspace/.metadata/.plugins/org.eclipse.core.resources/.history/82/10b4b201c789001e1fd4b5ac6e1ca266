@@ -1,0 +1,11 @@
+package tw.lab.classes;
+
+public class Try01Class {
+	public String creatID () {
+		String newID ;
+		
+		for 
+		
+		return "ID";
+	}
+}

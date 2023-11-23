@@ -1,0 +1,12 @@
+package tw.labs.lab01;
+
+import javax.swing.JFrame;
+
+public class try01 extends JFrame {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
