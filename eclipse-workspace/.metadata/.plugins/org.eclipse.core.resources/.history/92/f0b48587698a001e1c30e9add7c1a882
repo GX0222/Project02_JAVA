@@ -1,0 +1,29 @@
+package tw.lab.classes;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JPanel;
+
+public class MyPanel extends JPanel {
+	public  MyPanel() {
+		setBackground(Color.yellow);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paintComponent(g);
+		if(g instanceof Graphics2D) {
+			System.out.println("Ok");
+		}else {
+			System.out.println("XX");
+		}
+		
+		Graphics2D g2d = (Graphics2D)g;
+		g2d.drawLine(0, 0, 200, 400);
+		
+	}
+
+}

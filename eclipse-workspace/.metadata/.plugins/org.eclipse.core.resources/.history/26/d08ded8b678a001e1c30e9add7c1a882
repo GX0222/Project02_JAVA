@@ -1,0 +1,25 @@
+package tw.lab.classes;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.DebugGraphics;
+import javax.swing.JPanel;
+
+public class MyPanel extends JPanel {
+	public  MyPanel() {
+		setBackground(Color.yellow);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+//		System.out.println("OK");
+		
+		if(g instanceof DebugGraphics) {
+			System.out.println("OK");
+		}else {
+			System.out.println("XX");
+		}
+	}
+
+}
