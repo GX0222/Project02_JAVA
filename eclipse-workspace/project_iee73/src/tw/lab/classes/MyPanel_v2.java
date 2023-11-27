@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 
 public class MyPanel_v2 extends JPanel {
 
-	private LinkedList<LinkedList<Point>> lineBox;
-	private LinkedList<LinkedList<Point>> lineMove;
-	public int drawType = 2; // 1:Line, 2:Rectangle
+	private LinkedList<Line> lineBox, lineMove;
+	private Color color = Color.BLACK;
+	private int drawType = 0; // 0:Line, 1:Rectangle
 
 	public MyPanel_v2() {
 		setBackground(Color.WHITE);
@@ -36,20 +36,40 @@ public class MyPanel_v2 extends JPanel {
 
 		Graphics2D g2d = (Graphics2D) g;
 
-		for (LinkedList<Point> line : lineBox) {
-			for (int i = 1; i < line.size(); i++) {
-				if (drawType == 1) {
-					g2d.setColor(line.get(i).color);
-					g2d.setStroke(new BasicStroke(5, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-					g2d.drawLine(line.get(i - 1).x, line.get(i - 1).y, line.get(i).x, line.get(i).y);
-				} else if (drawType == 2) {
-					g2d.setColor(line.get(i).color);
-					g2d.setStroke(new BasicStroke(5, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-					int width = line.get(i).x - line.get(i - 1).x;
-					int height = line.get(i).y - line.get(i - 1).y;
-					g2d.drawRect(line.get(i - 1).x, line.get(i - 1).y, width, height);
+		for (Line line : lineBox) {
+			g2d.setColor(line.color);
+			g2d.setStroke(new BasicStroke(5, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+			switch (line.drawType) {
+			case 0: {
+				for (int i = 1; i < line.points.size(); i++) {
+					g2d.drawLine(line.points.get(i - 1).x, line.points.get(i - 1).y, line.points.get(i).x,
+							line.points.get(i).y);
 				}
 			}
+			case 1, 2: {
+				int width;
+				int widthStart;
+				int height;
+				int heightStart;
+				if (line.points.get(1).x >= line.points.get(0).x) {
+					widthStart = line.points.get(0).x;
+					width = line.points.get(1).x - line.points.get(0).x;
+				} else {
+					widthStart = line.points.get(1).x;
+					width = line.points.get(0).x - line.points.get(1).x;
+				}
+				if (line.points.get(1).y >= line.points.get(0).y) {
+					heightStart = line.points.get(0).y;
+					height = line.points.get(1).y - line.points.get(0).y;
+				} else {
+					heightStart = line.points.get(1).y;
+					height = line.points.get(0).y - line.points.get(1).y;
+				}
+				g2d.drawRect(widthStart, heightStart, width, height);
+			}
+			}
+
 		}
 
 	}
@@ -58,37 +78,21 @@ public class MyPanel_v2 extends JPanel {
 		@Override
 		public void mousePressed(MouseEvent e) {
 			lineMove.clear();
-			Point point = new Point();
-			point.x = e.getX();
-			point.y = e.getY();
-			point.color = getForeground();
-
-			LinkedList<Point> line = new LinkedList<>();
-			line.add(point);
-			lineBox.addLast(line);
+			Line line = new Line(e.getX(), e.getY(), color, drawType);
+			lineBox.add(line);
 		}
 
 		@Override
 		public void mouseDragged(MouseEvent e) {
-			Point point = new Point();
-			
-			if (drawType==1) {
-				point.x = e.getX();
-				point.y = e.getY();
-				point.color = getForeground();
-				lineBox.getLast().add(point);
-			}else if(drawType==2) {
-				point.x = e.getX();
-				point.y = e.getY();
-				point.color = getForeground();
-				if(lineBox.getLast().size()>1) {
-					lineBox.getLast().removeLast();
-					lineBox.getLast().add(point);
-				}else {
-					point.x = e.getX();
-					point.y = e.getY();
-					point.color = getForeground();
-					lineBox.getLast().add(point);
+			if (drawType == 0) {
+				lineBox.getLast().addPoint(e.getX(), e.getY());
+			} else if (drawType == 1) {
+
+				if (lineBox.getLast().points.size() > 1) {
+					lineBox.getLast().points.removeLast();
+					lineBox.getLast().addPoint(e.getX(), e.getY());
+				} else {
+					lineBox.getLast().addPoint(e.getX(), e.getY());
 				}
 			}
 			repaint();
@@ -96,7 +100,7 @@ public class MyPanel_v2 extends JPanel {
 	}
 
 	public void paintClear() {
-		for (LinkedList<Point> line : lineBox) {
+		for (Line line : lineBox) {
 			lineMove.add(line);
 		}
 		lineBox.clear();
@@ -114,32 +118,69 @@ public class MyPanel_v2 extends JPanel {
 		}
 	}
 
-	public Color changeColor() {
-		Color newColor = JColorChooser.showDialog(getRootPane(), getName(), getForeground());
-		if (newColor != null) {
-			setForeground(newColor);
-			return newColor;
-		} else {
-			return getForeground();
-		}
+	public Color getColor() {
+		return color;
 	}
 
-	public Color changeBgColor() {
-		Color oldColor = getForeground();
-		Color newColor = getContrastColor(oldColor);
-		return getForeground();
+	public void setColor(Color color) {
+		this.color = color;
+		setForeground(color);
+		repaint();
 	}
 
-	public Color getContrastColor(Color oldColor) {
-		int red = 255 - oldColor.getRed();
-		int green = 255 - oldColor.getGreen();
-		int blue = 255 - oldColor.getBlue();
-		return new Color(red, green, blue);
+	public void setType(int reqType) {
+		drawType = reqType;
+	}
+}
+
+class Line {
+	LinkedList<Point> points;
+	Color color;
+	int drawType;
+
+	Line(int x, int y, Color color, int drawType) {
+		this.color = color;
+		this.drawType = drawType;
+		points = new LinkedList<Point>();
+		addPoint(x, y);
+	}
+
+	void addPoint(int x, int y) {
+		Point point = new Point();
+		point.x = x;
+		point.y = y;
+		points.add(point);
 	}
 
 }
 
 class Point {
 	int x, y;
-	Color color;
 }
+
+//for (int i = 1; i < line.points.size(); i++) {
+//if (line.drawType == 0) {
+//	g2d.drawLine(line.points.get(i - 1).x, line.points.get(i - 1).y, line.points.get(i).x,
+//			line.points.get(i).y);
+//} else if (line.drawType == 1) {
+//	int width;
+//	int widthStart;
+//	int height;
+//	int heightStart;
+//	if (line.points.get(i).x >= line.points.get(i - 1).x) {
+//		widthStart = line.points.get(i - 1).x;
+//		width = line.points.get(i).x - line.points.get(i - 1).x;
+//	} else {
+//		widthStart = line.points.get(i).x;
+//		width = line.points.get(i - 1).x - line.points.get(i).x;
+//	}
+//	if (line.points.get(i).y >= line.points.get(i - 1).y) {
+//		heightStart = line.points.get(i - 1).y;
+//		height = line.points.get(i).y - line.points.get(i - 1).y;
+//	} else {
+//		heightStart = line.points.get(i).y;
+//		height = line.points.get(i - 1).y - line.points.get(i).y;
+//	}
+//	g2d.drawRect(widthStart, heightStart, width, height);
+//}
+//}

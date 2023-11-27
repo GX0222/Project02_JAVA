@@ -18,10 +18,7 @@ import tw.lab.classes.MyPanel_v2;
 public class MySign extends JFrame {
 
 	private MyPanel_v2 myPanel;
-	private JButton clear;
-	private JButton undo;
-	private JButton redo;
-	private JButton color;
+	private JButton clear, undo, redo, colorBtn, typeLine, typeRect;
 
 	public MySign() {
 		super("簽名App");
@@ -38,13 +35,19 @@ public class MySign extends JFrame {
 		top.add(undo);
 		redo = new JButton("Redo");
 		top.add(redo);
-		color = new JButton();
-		color.setPreferredSize(new Dimension(25, 25));
-		color.setForeground(Color.BLACK);
-		color.setBackground(myPanel.changeBgColor());
-		top.add(color);
+		colorBtn = new JButton();
+		colorBtn.setPreferredSize(new Dimension(25, 25));
+		colorBtn.setBackground(myPanel.getColor());
+		top.add(colorBtn);
 
 		add(top, BorderLayout.NORTH);
+
+		JPanel left = new JPanel(new FlowLayout());
+		typeLine = new JButton("L");
+		typeRect = new JButton("R");
+		left.add(typeLine);
+		left.add(typeRect);
+		add(left, BorderLayout.WEST);
 
 		setSize(640, 480);
 		setVisible(true);
@@ -76,12 +79,27 @@ public class MySign extends JFrame {
 				repaint();
 			}
 		});
-		color.addActionListener(new ActionListener() {
+		colorBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				color.setForeground(myPanel.changeColor());
-				color.setBackground(myPanel.changeBgColor());
+				Color color = JColorChooser.showDialog(rootPane, "Change Color", myPanel.getColor());
+				if (color != null) {
+					myPanel.setColor(color);
+					colorBtn.setBackground(color);
+				}
 				repaint();
+			}
+		});
+		typeLine.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myPanel.setType(0);
+			}
+		});
+		typeRect.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myPanel.setType(1);
 			}
 		});
 

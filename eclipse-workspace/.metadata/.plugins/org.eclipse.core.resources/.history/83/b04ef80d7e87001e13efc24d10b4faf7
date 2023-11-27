@@ -1,6 +1,0 @@
-package tw.lab.classes;
-
-public class Bike {
-	public double speed;
-	public boolean boo;
-}

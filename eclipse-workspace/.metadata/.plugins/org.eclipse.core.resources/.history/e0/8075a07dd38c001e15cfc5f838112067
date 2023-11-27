@@ -1,0 +1,22 @@
+package tw.labs.lab01;
+
+public class class35 {
+
+	public static void main(String[] args) {
+		Bird bird = new Bird();
+		
+	}
+
+}
+
+class Bird {
+	int leg;
+
+	void setLeg(int num) throws Exception {
+		if (num >= 0 && num <= 2) {
+			leg = num;
+		}else {
+			
+		}
+	}
+}
