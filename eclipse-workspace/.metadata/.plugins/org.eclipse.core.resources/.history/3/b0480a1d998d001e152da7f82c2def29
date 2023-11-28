@@ -1,0 +1,8 @@
+package tw.lab.classes;
+
+public class Student {
+	private int ch,eng,math;
+	public student (int ch, int eng,int math) {
+		this.ch=ch;this.eng=eng;this.math=math;
+	}
+}

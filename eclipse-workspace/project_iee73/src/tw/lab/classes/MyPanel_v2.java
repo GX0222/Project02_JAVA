@@ -6,9 +6,18 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 
@@ -131,9 +140,47 @@ public class MyPanel_v2 extends JPanel {
 	public void setType(int reqType) {
 		drawType = reqType;
 	}
+
+	// 存檔
+	public void saveObj(File file) throws Exception {
+		ObjectOutputStream oout = new ObjectOutputStream(new FileOutputStream(file));
+		oout.writeObject(lineBox);
+		oout.flush();
+		oout.close();
+	}
+
+	// 讀黨
+	public void loadObj(File file) throws Exception {
+		ObjectInputStream oin = new ObjectInputStream(new FileInputStream(file));
+		Object obj = oin.readObject();
+		oin.close();
+		if (obj instanceof LinkedList) {
+			lineBox = (LinkedList<Line>) obj;
+			repaint();
+		} else {
+			throw new Exception("ERR01:格式不對");
+		}
+		oin.close();
+	}
+
+	// 存JPG
+	public void saveJPEG() {
+		BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_BGR);
+		
+		Graphics g = img.getGraphics();
+		paint(g);
+		
+		try {
+			ImageIO.write(img, "jpg", new File("dir1/brad.jpg"));
+			System.out.println("Save JPG sucess!");
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+	}
+
 }
 
-class Line {
+class Line implements Serializable {
 	LinkedList<Point> points;
 	Color color;
 	int drawType;
@@ -154,7 +201,7 @@ class Line {
 
 }
 
-class Point {
+class Point implements Serializable {
 	int x, y;
 }
 

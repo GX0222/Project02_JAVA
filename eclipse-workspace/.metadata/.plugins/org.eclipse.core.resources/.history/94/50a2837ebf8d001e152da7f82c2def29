@@ -1,0 +1,12 @@
+package tw.labs.lab01;
+
+import javax.swing.JFrame;
+
+public class Racing extends JFrame {
+
+	public static void main(String[] args) {
+		new Racing();
+
+	}
+
+}

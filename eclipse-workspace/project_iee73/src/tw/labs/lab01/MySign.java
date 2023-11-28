@@ -6,9 +6,11 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,7 +20,7 @@ import tw.lab.classes.MyPanel_v2;
 public class MySign extends JFrame {
 
 	private MyPanel_v2 myPanel;
-	private JButton clear, undo, redo, colorBtn, typeLine, typeRect;
+	private JButton clear, undo, redo, colorBtn, typeLine, typeRect, saveObj, loadObj, saveAs;
 
 	public MySign() {
 		super("簽名App");
@@ -29,6 +31,12 @@ public class MySign extends JFrame {
 		add(myPanel, BorderLayout.CENTER);
 
 		JPanel top = new JPanel(new FlowLayout());
+		saveObj = new JButton("Save");
+		top.add(saveObj);
+		saveAs = new JButton("Save As...");
+		top.add(saveAs);
+		loadObj = new JButton("Load");
+		top.add(loadObj);
 		clear = new JButton("Clear");
 		top.add(clear);
 		undo = new JButton("Undo");
@@ -100,6 +108,46 @@ public class MySign extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				myPanel.setType(1);
+			}
+		});
+		saveObj.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser jfc = new JFileChooser();
+				if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+					File saveFile = jfc.getSelectedFile();
+
+					try {
+						myPanel.saveObj(saveFile);
+						System.out.println("Save sucess!");
+					} catch (Exception e1) {
+						System.out.println(e1);
+					}
+				}
+
+			}
+		});
+		loadObj.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser jfc = new JFileChooser();
+				if (jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+					File loadFile = jfc.getSelectedFile();
+					try {
+						myPanel.loadObj(loadFile);
+						System.out.println("Load sucess!");
+					} catch (Exception e1) {
+						System.out.println(e1);
+					}
+				}
+			}
+		});
+		saveAs.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myPanel.saveJPEG();
+				
 			}
 		});
 
