@@ -14,6 +14,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import tw.lab.classes.BradClock;
 import tw.lab.classes.MyPanel;
 import tw.lab.classes.MyPanel_v2;
 
@@ -21,6 +22,7 @@ public class MySign extends JFrame {
 
 	private MyPanel_v2 myPanel;
 	private JButton clear, undo, redo, colorBtn, typeLine, typeRect, saveObj, loadObj, saveAs;
+	private BradClock clock;
 
 	public MySign() {
 		super("簽名App");
@@ -47,6 +49,9 @@ public class MySign extends JFrame {
 		colorBtn.setPreferredSize(new Dimension(25, 25));
 		colorBtn.setBackground(myPanel.getColor());
 		top.add(colorBtn);
+
+		clock = new BradClock();
+		top.add(clock, BorderLayout.EAST);
 
 		add(top, BorderLayout.NORTH);
 
@@ -143,11 +148,20 @@ public class MySign extends JFrame {
 			}
 		});
 		saveAs.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				myPanel.saveJPEG();
-				
+				new Thread() {
+					@Override
+					public void run() {
+						JFileChooser jfc = new JFileChooser();
+						if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+							File saveFile = jfc.getSelectedFile();
+							myPanel.saveJPEG(saveFile);
+						}
+					}
+				}.start();
+
 			}
 		});
 

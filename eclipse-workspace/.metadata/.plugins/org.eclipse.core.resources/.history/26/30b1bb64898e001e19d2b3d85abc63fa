@@ -1,0 +1,16 @@
+package tw.labs.lab01;
+
+import java.net.DatagramSocket;
+
+public class class55 {
+
+	public static void main(String[] args) {
+		try {
+			DatagramSocket socket = new DatagramSocket(8888);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+}

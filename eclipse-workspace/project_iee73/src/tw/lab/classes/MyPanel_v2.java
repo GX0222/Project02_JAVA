@@ -164,14 +164,14 @@ public class MyPanel_v2 extends JPanel {
 	}
 
 	// 存JPG
-	public void saveJPEG() {
+	public void saveJPEG(File file) {
 		BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_BGR);
 		
 		Graphics g = img.getGraphics();
 		paint(g);
 		
 		try {
-			ImageIO.write(img, "jpg", new File("dir1/brad.jpg"));
+			ImageIO.write(img, "jpg", file);
 			System.out.println("Save JPG sucess!");
 		} catch (IOException e) {
 			System.out.println(e);

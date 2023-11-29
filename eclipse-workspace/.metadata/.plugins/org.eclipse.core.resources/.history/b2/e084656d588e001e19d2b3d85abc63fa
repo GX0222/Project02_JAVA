@@ -1,0 +1,23 @@
+package tw.labs.lab01;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class class52 {
+
+	public static void main(String[] args) {
+		Timer timer = new Timer();
+		MyTask task = new MyTask();
+
+	}
+
+
+}
+
+class MyTask extends TimerTask{
+	@Override
+	public void run() {
+		
+		
+	}
+}
