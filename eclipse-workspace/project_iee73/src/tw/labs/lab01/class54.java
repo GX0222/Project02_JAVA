@@ -10,12 +10,13 @@ public class class54 {
 	public static void main(String[] args) {
 		String mesg = "Hi Hi";
 		byte[] data = mesg.getBytes();
-		try {
-			DatagramSocket socket = new DatagramSocket();
+		
+		//小括號內放可自動關閉，不須再加.close()
+		try (DatagramSocket socket = new DatagramSocket();) {
 			DatagramPacket packet = new DatagramPacket(data, data.length
 					, InetAddress.getByName("10.0.104.209"), 8888);
 			socket.send(packet);
-			socket.close();
+//			socket.close();
 			System.out.println("Sended");
 		} catch (Exception e) {
 			System.out.println(e);

@@ -1,0 +1,74 @@
+package tw.lab.classes;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.LinkedList;
+
+import javax.swing.JPanel;
+
+public class PacManMap_v1 extends JPanel {
+
+	private int uniLong = 50;
+	private LinkedList<Wall> wallList;
+
+	// 建構式
+	public PacManMap_v1() {
+		wallList= new LinkedList<>();
+	}
+
+	// 畫布
+	protected void paintComponent(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(Color.BLUE);
+
+		int startx, starty, startx2, starty2, endx, endy;
+
+		for (int i = 0; i < 20; i++) {
+			startx = uniLong * (int) (Math.random() * 15 + 1);
+			starty = uniLong * (int) (Math.random() * 13 + 1);
+			startx2 = uniLong * (int) (Math.random() * 15 + 1);
+			starty2 = uniLong * (int) (Math.random() * 13 + 1);
+			endx = uniLong * (int) (Math.random() * 15 + 1);
+			endy = uniLong * (int) (Math.random() * 13 + 1);
+			while(startx==endx){
+				endx = uniLong * (int) (Math.random() * 15 + 1);
+			}
+			while(starty==endy) {
+				endy = uniLong * (int) (Math.random() * 13 + 1);
+			}
+
+			g2d.drawLine(startx, starty, endx, starty);
+			g2d.drawLine(startx2, starty2, startx2, endy);
+
+			getPoints(startx, endx,i);
+		}
+
+	}
+
+	private void getPoints(int req1, int req2,int index) {
+		int len = (int) Math.abs(req1 - req2);
+		Wall wall = new Wall();
+		if (req1 > req2) {
+			System.out.println(req2+":"+req1);
+			for (int i2 = 0; i2 < len; i2++) {
+				System.out.printf("%d ", req2 + i2);
+				wallList[index];
+			}
+			System.out.println();
+		} else {
+			System.out.println(req1+":"+req2);
+			for (int i2 = 0; i2 < len; i2++) {
+				System.out.printf("%d ", req1 + i2);
+			}
+			System.out.println();
+		}
+	}
+
+	// 內部類別
+	class Wall {
+		int start;
+		int end;
+		int points[];
+	}
+}
