@@ -39,6 +39,7 @@ public class JDBC04 {
 					sb.append(line);
 				}
 				JSONArray root = new JSONArray(sb.toString());
+				//test
 				for (Object row : root) {
 					JSONObject data = (JSONObject) row;
 					String name = data.getString("Name");
