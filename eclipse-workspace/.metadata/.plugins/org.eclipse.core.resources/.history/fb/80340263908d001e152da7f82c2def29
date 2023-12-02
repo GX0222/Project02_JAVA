@@ -1,0 +1,18 @@
+package tw.labs.lab01;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+public class class40 {
+
+	public static void main(String[] args) {
+		try {
+			FileReader reader = new FileReader("dir1/ns1hosp.csv");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+
+	}
+
+}

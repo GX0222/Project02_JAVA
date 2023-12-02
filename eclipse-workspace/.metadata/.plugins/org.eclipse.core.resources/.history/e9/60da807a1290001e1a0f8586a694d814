@@ -1,0 +1,104 @@
+package tw.lab.classes;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.LinkedList;
+
+import javax.swing.JPanel;
+
+public class PacManMap_v1 extends JPanel {
+
+	private int uniLong = 50;
+	private LinkedList<Wall> wallList;
+
+	// 建構式
+	public PacManMap_v1() {
+		wallList = new LinkedList<>();
+	}//
+
+	// 畫布
+	protected void paintComponent(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(Color.BLUE);
+
+		int startx, starty, startx2, starty2, endx, endy;
+
+		for (int i = 0; i < 20; i++) {
+			startx = uniLong * (int) (Math.random() * 15 + 1);
+			starty = uniLong * (int) (Math.random() * 13 + 1);
+			endx = uniLong * (int) (Math.random() * 15 + 1);
+
+			while (startx != endx && isCover(startx,endx)) {
+				endx = uniLong * (int) (Math.random() * 15 + 1);
+			}
+
+			Wall wall = getPoints(startx, endx, i);
+
+			g2d.drawLine(startx, starty, endx, starty);
+		} // for
+
+		for (int i = 0; i < 20; i++) {
+			startx2 = uniLong * (int) (Math.random() * 15 + 1);
+			starty2 = uniLong * (int) (Math.random() * 13 + 1);
+			endy = uniLong * (int) (Math.random() * 13 + 1);
+
+			while (starty2 != endy&& isCover(startx,endx)) {
+				endy = uniLong * (int) (Math.random() * 13 + 1);
+			}
+
+			g2d.drawLine(startx2, starty2, startx2, endy);
+		} // for
+
+	}// paintComponent
+
+	private boolean isCover(int start, int end) {
+		for (Wall wall : wallList) {
+			for (int points : wall.points) {
+				if (points == start || points == end) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	//
+
+	private boolean isCross(int index) {
+
+		return true;
+	}
+
+	private Wall getPoints(int req1, int req2, int index) {
+		int len = (int) Math.abs(req1 - req2);
+		Wall wall = new Wall();
+		wall.points = new int[len];
+		if (req1 > req2) {
+			System.out.println(req2 + ":" + req1);
+			wall.start = req2;
+			wall.end = req1;
+			for (int i2 = 0; i2 < len; i2++) {
+				System.out.printf("%d ", req2 + i2);
+				wall.points[i2] = (req2 + i2);
+			}
+			System.out.println();
+		} else {
+			System.out.println(req1 + ":" + req2);
+			for (int i2 = 0; i2 < len; i2++) {
+				System.out.printf("%d ", req1 + i2);
+				wall.points[i2] = (req2 + i2);
+			}
+			System.out.println();
+		}
+		return wall;
+	}//
+
+	// 內部類別
+	class Wall {
+		int xy; // x=0,y=1;
+		int start;
+		int end;
+		int[] points;
+	}//
+}
+//---------------------------------------

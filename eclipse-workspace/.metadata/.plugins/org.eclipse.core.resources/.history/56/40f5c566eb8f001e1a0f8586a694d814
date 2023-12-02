@@ -1,0 +1,15 @@
+package tw.labs.lab01;
+
+public class JDBC01 {
+
+	public static void main(String[] args) {
+		// 1. Load Driver
+		try {
+			Class.forName("");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+}

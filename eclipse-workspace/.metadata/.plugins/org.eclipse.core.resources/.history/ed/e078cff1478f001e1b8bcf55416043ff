@@ -1,0 +1,21 @@
+package tw.labs.lab01;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.LayoutStyle;
+
+public class PacMan_v1 extends JFrame {
+	
+	//建構式
+	public PacMan_v1() {
+		super("PacMan");
+		setLayout(new BorderLayout());
+	}
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

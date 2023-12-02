@@ -1,0 +1,29 @@
+package tw.labs.lab01;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class class52 {
+
+	public static void main(String[] args) {
+		Timer timer = new Timer();
+
+		MyTask task = new MyTask();
+		timer.schedule(task, 3 * 1000);
+		System.out.println("main");
+
+	}
+
+}
+//end
+
+//Class
+class MyTask extends TimerTask {
+	private int i;
+
+	@Override
+	public void run() {
+		System.out.println(i++);
+
+	}
+}

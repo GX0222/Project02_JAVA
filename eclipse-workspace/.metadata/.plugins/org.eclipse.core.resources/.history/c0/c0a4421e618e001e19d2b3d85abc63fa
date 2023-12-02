@@ -1,0 +1,19 @@
+package tw.labs.lab01;
+
+import javax.swing.JFrame;
+
+public class MyGame extends JFrame {
+	
+	public MyGame() {
+		super("遊戲");
+	}
+
+	public static void main(String[] args) {
+		
+		
+			
+		}
+
+	}
+
+}

@@ -1,0 +1,18 @@
+package tw.labs.lab01;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FilterInputStream;
+
+public class class41 {
+
+	public static void main(String[] args) {
+		try {
+			FileInputStream fin = new FileInputStream("dir1/rise.jpg");
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		}
+
+	}
+
+}

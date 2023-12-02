@@ -1,0 +1,19 @@
+package tw.labs.lab01;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class class37 {
+
+	public static void main(String[] args) {
+		try {
+			FileInputStream fin = new FileInputStream("dir3/file2");
+			fin.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+	}
+
+}

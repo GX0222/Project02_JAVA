@@ -1,0 +1,29 @@
+package tw.labs.lab01;
+
+public class class49 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+
+class Class491 {
+	Class491(){
+		System.out.println("Class491");
+	}
+}
+
+class Class492 extends Class491{
+	Class492(){
+		System.out.println("Class492");
+	}
+}
+
+class Class493 extends Class492{
+	Class493(){
+		System.out.println("Class493");
+	}
+}

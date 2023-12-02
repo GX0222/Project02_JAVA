@@ -1,0 +1,19 @@
+package tw.labs.lab01;
+
+public class JDBC01 {
+
+	public static void main(String[] args) {
+		// 1. Load Driver
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("驅動載入成功");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		//---------------------------------------------------
+		
+		
+		
+	}
+
+}

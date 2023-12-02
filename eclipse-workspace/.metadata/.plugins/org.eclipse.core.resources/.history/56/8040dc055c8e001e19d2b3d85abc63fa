@@ -1,0 +1,9 @@
+package tw.lab.classes;
+
+import javax.swing.JLabel;
+
+public class BradClock extends JLabel {
+	public BradClock() {
+		setText("10:10:10");
+	}
+}

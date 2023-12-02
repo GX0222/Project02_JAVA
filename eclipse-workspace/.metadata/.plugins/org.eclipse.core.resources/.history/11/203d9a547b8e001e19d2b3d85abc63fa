@@ -1,0 +1,30 @@
+package tw.labs.lab01;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+
+import tw.lab.classes.GamePanel;
+
+public class MyGame extends JFrame {
+	private GamePanel panel;
+
+	public MyGame() {
+		super("遊戲");
+		panel = new GamePanel();
+
+		setLayout(new BorderLayout());
+
+		add(panel, BorderLayout.CENTER);
+		
+		setSize(640, 480);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+	}
+
+	public static void main(String[] args) {
+		new MyGame();
+	}
+
+}
