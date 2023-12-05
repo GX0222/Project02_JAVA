@@ -1,0 +1,29 @@
+package tw.labs.lab01;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
+public class JDBC10 {
+
+	public static void main(String[] args) {
+		String sql = 
+				"SELECT e.LastName, e.FirstName, sum(od.UnitPrice * od.Quantity) sum " + 
+				"FROM orders o " + 
+				"JOIN employees e ON (e.EmployeeID = o.EmployeeID) " + 
+				"JOIN orderdetails od ON (od.OrderID = o.OrderID) " + 
+				"GROUP BY e.LastName, e.FirstName " + 
+				"ORDER BY sum DESC";
+		Properties prop = new Properties();
+		prop.put("user", "root");
+		prop.put("password", "root");
+		try {
+			Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/northwind",prop);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
+}

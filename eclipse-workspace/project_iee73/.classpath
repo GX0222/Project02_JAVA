@@ -8,7 +8,5 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="D:/資展_EEIT73/MyGit/Project02_JAVA/eclipse-workspace/project_iee73/BuildPath/json-20231013.jar"/>
 	<classpathentry kind="lib" path="D:/資展_EEIT73/MyGit/Project02_JAVA/eclipse-workspace/project_iee73/BuildPath/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar"/>
-	<classpathentry kind="lib" path="D:/GitHubData/Project02_JAVA/eclipse-workspace/project_iee73/BuildPath/json-20231013.jar"/>
-	<classpathentry kind="lib" path="D:/GitHubData/Project02_JAVA/eclipse-workspace/project_iee73/BuildPath/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
