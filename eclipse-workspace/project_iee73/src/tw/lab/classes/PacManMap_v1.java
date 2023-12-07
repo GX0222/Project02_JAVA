@@ -77,7 +77,7 @@ public class PacManMap_v1 extends JPanel {
 		return true;
 	}
 
-	private void getPoints0(int req1, int req2, int req3, int type) {
+	private void getPoints(int req1, int req2, int req3, int type) {
 		int len = (int) Math.abs(req1 - req2);
 		Wall wall = new Wall();
 		wall.points = new LinkedList<>();
