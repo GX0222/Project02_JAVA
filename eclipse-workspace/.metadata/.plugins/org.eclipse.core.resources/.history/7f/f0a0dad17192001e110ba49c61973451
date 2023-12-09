@@ -1,6 +1,0 @@
-package tw.lab.classes;
-
-public class Member {
-	private int id;
-	private String account,cname;
-}
