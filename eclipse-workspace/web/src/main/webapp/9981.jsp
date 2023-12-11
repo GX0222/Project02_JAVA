@@ -22,8 +22,15 @@
 		</style>
 	</head>
 	<body>
+		<script type="text/javascript">
+			function checkForm() {
+				if (start>9||start<1) {
+					
+				}
+			}
+		</script>
 	
-		<form action="">
+		<form onsubmit="return checkForm()">
 		Start: <input type="number" name="start">
 			<input type="number" name="rows">
 			x

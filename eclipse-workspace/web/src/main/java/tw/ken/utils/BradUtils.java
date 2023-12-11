@@ -12,10 +12,26 @@ public class BradUtils {
 		String line;
 		StringBuffer sb = new StringBuffer();
 		while ((line = reader.readLine()) != null) {
-			sb.append(line+"\n");
+			sb.append(line + "\n");
 		}
 		reader.close();
 
 		return sb.toString();
+	}
+
+	public static String calc(String x, String y, String op) {
+		try {
+			int intX = Integer.parseInt(x);
+			int intY = Integer.parseInt(y);
+			switch (op){
+			case "1": return "" + (intX + intY);
+			case "2": return "" + (intX - intY);
+			case "3": return "" + (intX * intY);
+			case "4": return (intX / intY) + "..." + (intX % intY);
+			}
+			return "Err";
+		} catch (Exception e) {
+			return "";
+		}
 	}
 }
