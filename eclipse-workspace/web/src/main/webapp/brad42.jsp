@@ -9,8 +9,23 @@
 	</head>
 	<body>
 		<c:set var="x" value="123"></c:set>
-		<c:set var="y">345</c:set>
-		x = ${x }
+		<c:set var="x" value="345" scope="request"></c:set>
+		x = ${x }<br>
+		x = ${requestScope.x }
+		<hr>
+		<c:out value="Hello World"></c:out><br>
+		<c:out value="${x }"></c:out><br>
+		<c:out value="${param.i }"></c:out>
+		<hr>
+		<jsp:useBean id="member" class="tw.ken.utils.Member"></jsp:useBean>
+		<c:set target="${member }" property="id">4</c:set>
+		<c:set target="${member }" property="account">48763</c:set>
+		<c:set target="${member }" property="name">Kirito</c:set>
+		${member.id } : ${member.account } : ${member.name }
+		<hr>
+		${member }
+		<hr>
+		
 		
 	</body>
 </html>
