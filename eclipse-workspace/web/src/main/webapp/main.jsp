@@ -1,3 +1,4 @@
+<%@page import="tw.ken.utils.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -8,6 +9,13 @@
 	user="root"
 	password="root"
 />
+<%
+	Member member =  (Member)session.getAttribute("member");
+	if(member == null){
+		response.sendRedirect("login.jsp");
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html>
 	<sql:query var="rs">SELECT * FROM member</sql:query>
@@ -27,6 +35,10 @@
 		<h1>Main</h1>
 		<hr>
 		<a href="addnew.jsp">AddNew</a>
+		<a href="logout.jsp">Logout</a>
+		<hr>
+		Welcome, ${member.name } <%=member.getName() %>
+		<hr>
 		<table width="100%">
 			<tr>
 				<th class="border">id</th>

@@ -27,6 +27,7 @@
 							<jsp:setProperty property="id" value="${rs.rows[0].id }" name="member"/>
 							<jsp:setProperty property="account" value="${rs.rows[0].account }" name="member"/>
 							<jsp:setProperty property="name" value="${rs.rows[0].cname }" name="member"/>
+							<c:set var="member" value="${member}" scope="session"></c:set>
 							<c:redirect url="main.jsp"></c:redirect>
 						</c:when>
 						<c:otherwise>

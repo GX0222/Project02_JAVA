@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<script>
+			function beforeSubmit(){
+				var remember = $("#remember").prop('checked');
+				if(remember){
+					var account = $("#account").val();
+					var password = $("#password").val();
+					
+					document.cookie = "account = " + account;
+					document.cookie = "password = " + password;
+					document.cookie = "remember = " + remember;
+					
+					console.log(document.cookie);
+				}else{
+					var cookies = document.cookie.split(";");
+					for (var i = 0; i < cookies.length ; i++){
+						var pair = cookies[i].split("=");
+						document.cookie = pair[0] + ' =; expirse=Thu, 01 Jan 1970 00:00:00 UTC';
+					}
+					console.log(document.cookie);
+				}
+				return true;
+			}
+			console.log(document.cookie);
+			
+			var cookies = {};
+			
+			function parseCookie(){
+				var arrCookies = document.cookie.split(";");
+				arrCookies.forEach(function(item, i){
+					var pair = item.trim().split("=");
+					cookies[pair[0]] = pair[1];
+				});
+			}
+			
+			function getCookie(key){
+				return cookies[key];
+			}
+			
+			parseCookie();
+		</script>
+		<form action="brad61.jsp" onsubmit="return beforeSubmit()">
+			Account: <input id="account" type="text" name="account"><br>
+			Password: <input id="password" type="password" name="password"><br>
+			<input id="remember" name="remember" type="checkbox"> Remeber Me
+			<hr>
+			<input type="submit" value="Submit">
+		</form>
+		<script>
+			if(getCookie('account')){
+				$("#account").prop('value', getCookie('account'));
+			}
+			if(getCookie('password')){
+				$("#password").prop('value', getCookie('password'));
+			}
+			if(getCookie('remember')){
+				$("#remember").prop('checked', true);
+			}
+		</script>
+	</body>
+</html>
