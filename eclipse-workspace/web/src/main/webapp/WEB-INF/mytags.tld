@@ -7,9 +7,10 @@
         version="2.1">
         <tlib-version>2.1</tlib-version>
         <short-name>bradtag</short-name>
-        
-        <tag>
-        	<name></name>
-        	
-        </tag>
+	
+	<tag>
+		<name>Lottery</name>
+		<tag-class>tw.brad.tags.MyTag1</tag-class>
+		<body-content>empty</body-content>
+	</tag>
 </taglib>
